@@ -17,4 +17,24 @@ class AdminCategoriesController extends BaseController
         $categories = $this->categories->all();
         return view('categories', compact('categories'));
     }
+
+    public function getNova(){
+        return 'Nova Categoria';
+    }
+
+    public function postNova(){
+        return 'Nova Categoria';
+    }
+
+    public function getEditar($id){
+        return 'Editar Categoria '.$id;
+    }
+
+    public function putEditar(){
+        return 'Editar Categoria';
+    }
+
+    public function deleteDeletar($id){
+        return 'Deletar Categoria '.$id;
+    }
 }
