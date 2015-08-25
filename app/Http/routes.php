@@ -71,8 +71,8 @@ Route::get('category/{category}', function(\CodeCommerce\Category $category){
 */
 
 Route::pattern('id','[0-9]+');
-Route::group(['prefix' => 'admin/products'], function(){
-
+Route::group(['prefix' => 'admin'], function(){
+    Route::group(['prefix' => 'products'], function(){
         Route::get('listar',['as' => 'produtos', function(){
             return 'Lista de Produtos';
         }]);
@@ -85,40 +85,35 @@ Route::group(['prefix' => 'admin/products'], function(){
 
             return "Não é um ID válido";
         }]);
-
-        Route::delete('deletar/{id?}',['as' => 'produto-deletar', function($id = "0"){
+        Route::match(['get','delete'],'deletar/{id?}', ['as' => 'produto-deletar', function($id = "0"){
             if($id)
                 return 'Deletar Produto '.$id;
 
             return "Não é um ID válido";
         }]);
+    });
+    Route::group(['prefix' => 'categories'], function(){
+        Route::get('listar',['as' => 'categorias', function(){
+            return 'Lista de Categorias';
+        }]);
+        Route::match(['get','post'],'nova',['as' => 'categoria-nova', function(){
+            return 'Nova de Categoria';
+        }]);
+        Route::match(['get','put'],'editar/{id?}', ['as' => 'categoria-editar', function($id = "0"){
+            if($id)
+                return 'Editar Categoria '.$id;
 
+            return "Não é um ID válido";
+        }]);
+        Route::delete('deletar/{id?}',['as' => 'categoria-deletar',function($id = "0"){
+            if($id)
+                return 'Deletar Categoria '.$id;
+
+            return "Não é um ID válido";
+        }]);
+    });
 });
 //echo route('produto-deletar');die();
-Route::group(['prefix' => 'admin/categories'], function(){
-
-    Route::get('listar',['as' => 'categorias', function(){
-        return 'Lista de Categorias';
-    }]);
-    Route::match(['get','post'],'nova',['as' => 'categoria-nova', function(){
-        return 'Nova de Categoria';
-    }]);
-    Route::match(['get','put'],'editar/{id?}', ['as' => 'categoria-editar', function($id = "0"){
-        if($id)
-            return 'Editar Categoria '.$id;
-
-        return "Não é um ID válido";
-    }]);
-
-    Route::delete('deletar/{id?}',['as' => 'categoria-deletar',function($id = "0"){
-        if($id)
-            return 'Deletar Categoria '.$id;
-
-        return "Não é um ID válido";
-    }]);
-
-});
-
 //Route::get('categories','CategoriesController@index');
 //Route::get('/', 'WelcomeController@index');
 //Route::get('exemplo', 'WelcomeController@exemplo');
