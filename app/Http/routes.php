@@ -100,8 +100,8 @@ Route::group(['prefix' => 'admin/categories'], function(){
     Route::get('listar',['as' => 'categorias', function(){
         return 'Lista de Categorias';
     }]);
-    Route::match(['get','post'],'novo',['as' => 'categoria-nova', function(){
-        return 'Novo de Categoria';
+    Route::match(['get','post'],'nova',['as' => 'categoria-nova', function(){
+        return 'Nova de Categoria';
     }]);
     Route::match(['get','put'],'editar/{id?}', ['as' => 'categoria-editar', function($id = "0"){
         if($id)
