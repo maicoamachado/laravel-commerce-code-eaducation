@@ -25,5 +25,8 @@
                 </tr>
             @endforeach
         </table>
+        <div class="text-center">
+            {!! $categories->render() !!}
+        </div>
     </div>
 @endsection
