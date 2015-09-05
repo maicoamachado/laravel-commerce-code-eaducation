@@ -9,7 +9,9 @@
     <file url="file://$PROJECT_DIR$/resources/views/exemplo.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/products.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/products/create.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/products/create_image.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/products/edit.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/products/images.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/products/index.blade.php" charset="UTF-8" />
   </component>
 </project>
