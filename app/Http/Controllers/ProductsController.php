@@ -49,9 +49,10 @@ class ProductsController extends Controller
     {
         $tag = new Tag();
         foreach ($inputTags as $key => $value) {
-
-            $newTag = $tag->firstOrCreate(["name" => $value]);
-            $idTags[] = $newTag->id;
+            if (!empty($value)) {
+                $newTag = $tag->firstOrCreate(["name" => trim($value)]);
+                $idTags[] = $newTag->id;
+            }
         }
 
         $product = $this->productModel->find($id);
