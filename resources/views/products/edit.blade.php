@@ -45,6 +45,11 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('tags', 'Tags: (Separe as tags com vírgula)') !!}
+            {!! Form::textarea('tags', $tags, ['class' => 'form-control', 'rows' => 3]) !!}
+        </div>
+
+        <div class="form-group">
             {!! Form::submit('Save Product', ['class' => 'btn btn-primary']) !!}
         </div>
 

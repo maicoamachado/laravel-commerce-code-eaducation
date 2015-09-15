@@ -8,6 +8,7 @@ use CodeCommerce\ProductImage;
 use CodeCommerce\Http\Requests\ProductImageRequest;
 use CodeCommerce\Http\Requests\ProductRequest;
 use CodeCommerce\Http\Requests;
+use CodeCommerce\Tag;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -38,20 +39,42 @@ class ProductsController extends Controller
 
         $product->save();
 
+        $inputTags = array_map('trim', explode(',', $request->get('tags')));
+        $this->storeTags($inputTags, $product->id);
+
         return redirect()->route('products');
     }
+
+    private function storeTags($inputTags, $id)
+    {
+        $tag = new Tag();
+        foreach ($inputTags as $key => $value) {
+
+            $newTag = $tag->firstOrCreate(["name" => $value]);
+            $idTags[] = $newTag->id;
+        }
+
+        $product = $this->productModel->find($id);
+        $product->tags()->sync($idTags);
+
+    }
+
 
     public function edit($id, Category $category){
 
         $categories = $category->lists('name', 'id');
         $product = $this->productModel->find($id);
-
-        return view('products.edit', compact('product', 'categories'));
+        $tags = $product->getTagListAttribute();
+        //dd($tags);
+        return view('products.edit', compact('product', 'categories', 'tags'));
     }
 
     public function update(ProductRequest $request, $id){
 
         $this->productModel->find($id)->update($request->all());
+
+        $inputTags = array_map('trim', explode(',', $request->get('tags')));
+        $this->storeTags($inputTags, $id);
 
         return redirect()->route('products');
     }

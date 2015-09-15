@@ -24,7 +24,7 @@
 
         <div class="form-group">
             {!! Form::label('description', 'Description:') !!}
-            {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => 3]) !!}
         </div>
 
         <div class="form-group">
@@ -42,6 +42,11 @@
             {!! Form::label('recommend', 'Recommend?') !!}
             {!! Form::radio('recommend', 1, ['class' => 'form-control']) !!} Yes
             {!! Form::radio('recommend', 0, ['class' => 'form-control']) !!} No
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('tags', 'Tags: (Separe as tags com vírgula)') !!}
+            {!! Form::textarea('tags', null, ['class' => 'form-control', 'rows' => 3]) !!}
         </div>
 
         <div class="form-group">
