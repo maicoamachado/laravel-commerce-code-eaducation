@@ -3,38 +3,58 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Category;
-use Illuminate\Routing\Controller as BaseController;
+use CodeCommerce\Http\Requests\CategoryRequest;
+use Illuminate\Http\Request;
 
-class AdminCategoriesController extends BaseController
+use CodeCommerce\Http\Controllers\Controller;
+
+class AdminCategoriesController extends Controller
 {
-    private $categories;
+    private $categoryModel;
 
-    public function __construct(Category $category){
-        $this->categories = $category;
+    public function __construct(Category $categoryModel){
+        $this->categoryModel = $categoryModel;
     }
 
     public function index(){
-        $categories = $this->categories->all();
-        return view('categories', compact('categories'));
+        $categories = $this->categoryModel->paginate(10);
+        return view('categories.index', compact('categories'));
     }
 
-    public function getNova(){
-        return 'Nova Categoria';
+    public function create(){
+        return view('categories.create');
     }
 
-    public function postNova(){
-        return 'Nova Categoria';
+    public function store(CategoryRequest $request){
+
+        $input = $request->all();
+
+        $category = $this->categoryModel->fill($input);
+
+        $category->save();
+
+        return redirect()->route('categories');
     }
 
-    public function getEditar($id){
-        return 'Editar Categoria '.$id;
+    public function edit($id){
+
+        $category = $this->categoryModel->find($id);
+
+        return view('categories.edit', compact('category'));
     }
 
-    public function putEditar(){
-        return 'Editar Categoria';
+    public function update(CategoryRequest $request, $id){
+
+        $this->categoryModel->find($id)->update($request->all());
+
+        return redirect()->route('categories');
     }
 
-    public function deleteDeletar($id){
-        return 'Deletar Categoria '.$id;
+    public function destroy($id){
+
+        $this->categoryModel->find($id)->delete();
+
+        return redirect()->route('categories');
+
     }
 }

@@ -3,7 +3,7 @@
 namespace CodeCommerce;
 
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Product extends Model
 {
     protected $fillable = ['category_id', 'name', 'description', 'price', 'featured', 'recommend'];
@@ -32,5 +32,17 @@ class Product extends Model
         $tags = $this->tags->lists('name')->all();
 
         return implode(',', $tags);
+    }
+
+    public function scopeFeatured($query){
+        return $query->where('featured', '=', 1)->orderBy(DB::raw('RANDOM()'))->limit(3);
+    }
+
+    public function scopeRecommend($query){
+        return $query->where('recommend', '=', 1)->orderBy(DB::raw('RANDOM()'))->limit(3);
+    }
+
+    public function scopeProductsByCategory($query, $category_id){
+        return $query->where('category_id', '=', $category_id);
     }
 }
