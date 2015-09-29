@@ -46,13 +46,15 @@
                                 Adicionar no Carrinho
                             </a>
                     </span>
-                    <div class="row">
-                        <p class="lead">Tags Reference</p>
-                        @foreach($tags as $tag)
-                            <button type="button" class="btn btn-primary" onclick="document.location='{{ route('store.tag', ['id' => $tag->id]) }}'">{{$tag->name}}</button>
-                        @endforeach
+                    @if(count($tags) > 0)
+                        <div class="row">
+                            <p class="lead">Tags Reference</p>
+                            @foreach($tags as $tag)
+                                <button type="button" class="btn btn-primary" onclick="document.location='{{ route('store.tag', ['id' => $tag->id]) }}'">{{$tag->name}}</button>
+                            @endforeach
 
-                    </div>
+                        </div>
+                    @endif
                 </div>
                 <!--/product-information-->
             </div>
