@@ -121,6 +121,18 @@ Route::group(['prefix' => 'categories'], function(){
     Route::get('view/{id}/category',['as' => 'categories.view', 'uses' => 'CategoriesController@view']);
 });
 
+Route::group(['prefix' => 'store'], function(){
+    Route::get('/',['as' => 'store', 'uses' => 'StoreController@index']);
+    Route::get('category/{id}',['as' => 'store.category', 'uses' => 'StoreController@category']);
+    Route::get('product/{id}',['as' => 'store.product', 'uses' => 'StoreController@product']);
+    Route::get('tag/{id}',['as' => 'store.tag', 'uses' => 'StoreController@tag']);
+});
+
+Route::group(['prefix' => 'cart'], function(){
+    Route::get('/',['as' => 'cart', 'uses' => 'CartController@index']);
+    Route::get('add/{id}',['as' => 'cart.add', 'uses' => 'CartController@cart']);
+});
+
 Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function(){
 
     Route::group(['prefix' => 'categories'], function(){

@@ -1,6 +1,6 @@
 @extends('store.store')
 @section('categories')
-    @include('store.categories_partial')
+    @include('store.partial.categories')
 @stop
 @section('content')
     <div class="col-sm-9 padding-right">
