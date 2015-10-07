@@ -24,7 +24,6 @@ class CartController extends Controller
         foreach($cart->all() as $k => $item){
             $products[$k] = Product::find($k);
         }
-
         return view('store.cart', ['cart' => Session::get('cart'), 'products' => $products]);
     }
 

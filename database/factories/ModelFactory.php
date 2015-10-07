@@ -16,6 +16,7 @@ $factory->define(CodeCommerce\User::class, function ($faker) {
         'name' => $faker->name,
         'email' => $faker->email,
         'password' => str_random(10),
+        'is_admin' => $faker->numberBetween(0,1),
         'remember_token' => str_random(10),
     ];
 });

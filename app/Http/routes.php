@@ -115,7 +115,7 @@ Route::group(['prefix' => 'admin'], function(){
 //Route::get('admin/products', 'AdminProductsController@index');
 */
 Route::get('/','StoreController@index');
-
+Route::get('/home','StoreController@index');
 Route::group(['prefix' => 'categories'], function(){
     Route::get('/',['as' => 'categories', 'uses' => 'CategoriesController@index']);
     Route::get('view/{id}/category',['as' => 'categories.view', 'uses' => 'CategoriesController@view']);
@@ -136,7 +136,16 @@ Route::group(['prefix' => 'cart'], function(){
     Route::get('update/{id}/{qtd}',['as' => 'cart.update', 'uses' => 'CartController@update']);
 });
 
-Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function(){
+Route::group(['prefix' => 'checkout'], function(){
+    Route::get('placeOrder',['as' => 'checkout.place', 'uses' => 'CheckoutController@place']);
+});
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization'], 'where' => ['id' => '[0-9]+']], function(){
 
     Route::group(['prefix' => 'categories'], function(){
         Route::get('/',['as' => 'categories', 'uses' => 'AdminCategoriesController@index']);
