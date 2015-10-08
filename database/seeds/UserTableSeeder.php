@@ -34,7 +34,7 @@ class UserTableSeeder extends Seeder
         }
     */
         factory('CodeCommerce\User')->create([
-            'name' => 'Maico',
+            'name' => 'Maico Machado',
             'email' => 'maicoamachado@gmail.com',
             'password' => Hash::make('abc123'),
             'is_admin' => 1
