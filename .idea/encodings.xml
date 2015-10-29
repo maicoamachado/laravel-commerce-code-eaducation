@@ -3,12 +3,15 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/Http/routes.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/Product.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/auth/login.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/categories.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/categories/create.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/categories/edit.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/categories/index.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/categories/view.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/exemplo.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/orders/edit.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/orders/index.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/products.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/products/create.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/products/create_image.blade.php" charset="UTF-8" />

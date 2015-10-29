@@ -16,6 +16,10 @@ $factory->define(CodeCommerce\User::class, function ($faker) {
         'name' => $faker->name,
         'email' => $faker->email,
         'password' => str_random(10),
+        'address' => $faker->address,
+        'state_abbr' => $faker->stateAbbr,
+        'city' => $faker->city,
+        'post_code' => $faker->postcode,
         'is_admin' => $faker->numberBetween(0,1),
         'remember_token' => str_random(10),
     ];
@@ -36,5 +40,11 @@ $factory->define(CodeCommerce\Product::class, function ($faker) {
         'featured' => $faker->numberBetween(0,1),
         'recommend' => $faker->numberBetween(0,1),
         'category_id' => $faker->numberBetween(1, 15)
+    ];
+});
+
+$factory->define(CodeCommerce\StatusOrders::class, function ($faker) {
+    return [
+        'name' => $faker->word
     ];
 });

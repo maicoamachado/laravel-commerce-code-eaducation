@@ -136,8 +136,13 @@ Route::group(['prefix' => 'cart'], function(){
     Route::get('update/{id}/{qtd}',['as' => 'cart.update', 'uses' => 'CartController@update']);
 });
 
-Route::group(['prefix' => 'checkout'], function(){
+Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function(){
     Route::get('placeOrder',['as' => 'checkout.place', 'uses' => 'CheckoutController@place']);
+});
+
+Route::group(['prefix' => 'account', 'middleware' => 'auth'], function(){
+    Route::get('/',['as' => 'account', 'uses' => 'AccountController@index']);
+    Route::get('orders',['as' => 'account.orders', 'uses' => 'AccountController@orders']);
 });
 
 Route::controllers([
@@ -174,6 +179,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization'], 'w
 
     });
 
+    Route::group(['prefix' => 'orders'], function(){
+        Route::get('/',['as' => 'orders', 'uses' => 'AdminOrdersController@index']);
+        Route::get('{id}/edit',['as' => 'orders.edit', 'uses' => 'AdminOrdersController@edit']);
+        Route::post('{id}/update',['as' => 'orders.update', 'uses' => 'AdminOrdersController@update']);
+    });
 
+});
+
+Route::get('evento', function(){
+    \Illuminate\Support\Facades\Event::fire(new \CodeCommerce\Events\CheckoutEvent());
+    event(new \CodeCommerce\Events\CheckoutEvent());
 });
 

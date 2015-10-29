@@ -1,4 +1,4 @@
-@extends('app')
+@extends('store.store')
 
 @section('content')
 <div class="container-fluid">
@@ -32,6 +32,30 @@
 							<label class="col-md-4 control-label">E-Mail Address</label>
 							<div class="col-md-6">
 								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Address</label>
+							<div class="col-md-6">
+								<input type="address" class="form-control" name="address" value="{{ old('address') }}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">State Abbr</label>
+							<div class="col-md-6">
+								<input type="state_abbr" class="form-control" name="state_abbr" value="{{ old('state_abbr') }}" maxlength="2">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">City</label>
+							<div class="col-md-6">
+								<input type="city" class="form-control" name="city" value="{{ old('city') }}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Post Code</label>
+							<div class="col-md-6">
+								<input type="post_code" class="form-control" name="post_code" value="{{ old('post_code') }}">
 							</div>
 						</div>
 

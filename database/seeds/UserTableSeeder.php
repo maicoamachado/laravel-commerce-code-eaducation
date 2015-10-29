@@ -37,7 +37,11 @@ class UserTableSeeder extends Seeder
             'name' => 'Maico Machado',
             'email' => 'maicoamachado@gmail.com',
             'password' => Hash::make('abc123'),
-            'is_admin' => 1
+            'address' => 'Rua Ponta Negra, 235 - Centenario',
+            'state_abbr' => 'RS',
+            'city' => 'Montenegro',
+            'post_code' => '95780-000',
+            'is_admin' => 1,
         ]);
         factory('CodeCommerce\User', 10)->create();
     }
