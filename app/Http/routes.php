@@ -186,7 +186,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'authorization'], 'w
     });
 
 });
-
+Route::get('test', 'CheckoutController@test');
 Route::get('evento', function(){
     \Illuminate\Support\Facades\Event::fire(new \CodeCommerce\Events\CheckoutEvent());
     event(new \CodeCommerce\Events\CheckoutEvent());
