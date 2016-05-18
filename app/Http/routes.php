@@ -138,6 +138,7 @@ Route::group(['prefix' => 'cart'], function(){
 
 Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function(){
     Route::get('placeOrder',['as' => 'checkout.place', 'uses' => 'CheckoutController@place']);
+    Route::get('placeReturn',['as' => 'checkout.placeReturn', 'uses' => 'CheckoutController@placeReturn']);
 });
 
 Route::group(['prefix' => 'account', 'middleware' => 'auth'], function(){

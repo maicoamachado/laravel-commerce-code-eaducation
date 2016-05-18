@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
 
-    protected $fillable = ['user_id', 'total', 'status_id'];
+    protected $fillable = ['user_id', 'total', 'status_id', 'transaction_code'];
     public function items(){
         return $this->hasMany('CodeCommerce\OrderItem');
     }

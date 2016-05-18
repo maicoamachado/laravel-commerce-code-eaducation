@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->decimal('total', 8, 2);
             $table->smallInteger('status_id')->unsigned();
+            $table->string('transaction_code', 255);
             $table->foreign('status_id')->references('id')->on('status_orders');
             $table->timestamps();
         });
